@@ -122,7 +122,7 @@ class JsxRenderer extends marked.Renderer {
     }
     const alt = ` alt="${text}"`;
     const src = ` src="${escape(href)}"`;
-    const className = this.getClassFor('a');
+    const className = this.getClassFor('img');
     const titleTag = title ? ` title="${title}"` : '';
     return `<img${className}${src}${alt}${titleTag} />`;
   }
