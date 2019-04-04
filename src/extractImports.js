@@ -1,4 +1,4 @@
-const classifier = require('./classifier')
+const classifier = require('./classifier');
 
 module.exports = (raw) => {
   const { markdown, imports } = classifier(raw);
@@ -7,4 +7,4 @@ module.exports = (raw) => {
     markdown: markdown.join('\n'),
     imports: imports.join('\n'),
   };
-}
+};

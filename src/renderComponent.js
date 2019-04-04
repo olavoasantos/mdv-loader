@@ -1,5 +1,5 @@
 module.exports = (source, imports, options) => {
-  const { tag, classes, attrs } = options;
+  const { tag, classes } = options;
   const className = classes ? ` class="${classes}"` : '';
 
   return `

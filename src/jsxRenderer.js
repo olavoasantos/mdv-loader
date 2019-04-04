@@ -1,4 +1,4 @@
-const marked = require("marked");
+const marked = require('marked');
 const { cleanUrl, escape, unescape } = require('./helpers');
 
 class JsxRenderer extends marked.Renderer {
@@ -16,7 +16,8 @@ class JsxRenderer extends marked.Renderer {
   }
 
   blockquote(quote) {
-    return `<blockquote>${quote}</blockquote>\n`;
+    const className = this.getClassFor('blockquote');
+    return `<blockquote${className}>${quote}</blockquote>\n`;
   }
 
   heading(text, level, raw, slugger) {
@@ -34,8 +35,8 @@ class JsxRenderer extends marked.Renderer {
 
   list(body, ordered, start) {
     const className = this.getClassFor(ordered ? 'ol' : 'ul');
-    const type = ordered ? 'ol' : 'ul',
-          startatt = (ordered && start !== 1) ? (' start="' + start + '"') : '';
+    const type = ordered ? 'ol' : 'ul';
+    const startatt = (ordered && start !== 1) ? (` start="${start}"`) : '';
     return `<${type}${startatt}${className}>${body}</${type}${startatt}>\n`;
   }
 
@@ -45,9 +46,9 @@ class JsxRenderer extends marked.Renderer {
   }
 
   checkbox(checked) {
-    const checked = checked ? ' checked' : '';
+    const checkedTag = checked ? ' checked' : '';
     const className = this.getClassFor('checkbox');
-    return `<input${checked}${className} disabled="" type="checkbox" />`;
+    return `<input${checkedTag}${className} disabled="" type="checkbox" />`;
   }
 
   paragraph(text) {
@@ -74,7 +75,7 @@ class JsxRenderer extends marked.Renderer {
   tablecell(content, flags) {
     const type = flags.header ? 'th' : 'td';
     const typeClass = this.getClassFor(type);
-    const align = flags.align ? ` align="flags.align"` : '';
+    const align = flags.align ? ' align="flags.align"' : '';
     return `<${type}${typeClass}${align}>${content}</${type}>\n`;
   }
 
@@ -151,7 +152,7 @@ class JsxRenderer extends marked.Renderer {
     return `
     <pre${preClassName}>
       <code className="${lang} ${codeClassName}">
-        ${escaped ? code : "{`" + escape(code) + "`}"}
+        ${escaped ? code : `{\`${escape(code)}\`}`}
       </code>
     </pre>
     `;

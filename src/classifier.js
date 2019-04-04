@@ -1,6 +1,6 @@
 const { CODE_BLOCK_REGEX, IMPORT_REGEX } = require('./constants');
 
-module.exports = (raw) => raw.split('\n').reduce((nodes, line) => {
+module.exports = raw => raw.split('\n').reduce((nodes, line) => {
   if (IMPORT_REGEX.test(line) && !nodes.isCodeBlock) {
     nodes.imports.push(line);
   } else {
