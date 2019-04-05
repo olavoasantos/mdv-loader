@@ -94,6 +94,21 @@ export default {
 </script>
 ```
 
+Finally, since we need to export a JSX component, we need to use [Vue's babel preset JSX](https://github.com/vuejs/jsx). From their repo, we have:
+
+```bash
+yarn add -D @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props
+npm install @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props --save-dev
+```
+
+Then add the preset to `.babelrc`:
+
+```js
+{
+  "presets": ["@vue/babel-preset-jsx"]
+}
+```
+
 ## Options
 
 ### `container`
