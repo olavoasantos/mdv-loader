@@ -29,6 +29,23 @@ yarn add -D mdv-loader
 npm install --save-dev mdv-loader
 ```
 
+### Dependency
+
+Because of how MDV is currently being implemented, we'll need to install [Vue's babel preset JSX](https://github.com/vuejs/jsx). From their repo, we have:
+
+```bash
+yarn add @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props
+npm install @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props
+```
+
+Then add the preset to `.babelrc`:
+
+```js
+{
+  "presets": ["@vue/babel-preset-jsx"]
+}
+```
+
 ## Usage
 
 ### Vue cli project
@@ -92,21 +109,6 @@ export default {
   }
 };
 </script>
-```
-
-Finally, since we need to export a JSX component, we need to use [Vue's babel preset JSX](https://github.com/vuejs/jsx). From their repo, we have:
-
-```bash
-yarn add -D @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props
-npm install @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props --save-dev
-```
-
-Then add the preset to `.babelrc`:
-
-```js
-{
-  "presets": ["@vue/babel-preset-jsx"]
-}
 ```
 
 ## Options
